@@ -1,81 +1,112 @@
 # YouTube Search Library
 
-A powerful, purely client-side JavaScript library for searching YouTube videos without an official API key. It uses YouTube's internal InnerTube API pattern and provides a high-performance, cached searching experience.
+A powerful, purely client-side JavaScript library for searching YouTube videos without an official API key. Built with modern JavaScript, zero dependencies, and comprehensive caching.
 
-## ✨ Features
+## ✨ Key Features
 
-- **No API Key Required**: Works by emulating the internal YouTube web client.
-- **100% Client-Side**: No server-side code needed (bypasses CORS via configurable proxies).
-- **Persistent LRU Cache**: Automatically stores results in `localStorage` to save bandwidth and improve speed.
-- **Rich Metadata**: Returns titles, high-res thumbnails, watch links, durations, view counts, and channel names.
-- **Modular & Lightweight**: Zero dependencies, built with modern ES Modules.
-- **Premium Demo**: Includes a state-of-the-art, glassmorphic search interface.
+- **No API Key Required** - Works with YouTube's InnerTube API
+- **100% Client-Side** - No server code needed (with configurable CORS proxies)
+- **Smart Caching** - LRU cache with `localStorage` persistence
+- **TypeScript Support** - Full type definitions included
+- **Zero Dependencies** - Pure JavaScript, no bloat
+- **Works Everywhere** - Browser and Node.js compatible
 
 ## 🚀 Quick Start
-
-### 1. Installation
 
 ```bash
 npm install yt-search-lib
 ```
 
-### 2. Usage
-
 ```javascript
-import YouTubeClient from 'yt-search-lib';
+import { YouTubeClient } from 'yt-search-lib';
 
-// Initialize the client
 const client = new YouTubeClient({
-  // Bypassing CORS is mandatory for browser usage
-  proxyUrl: 'https://api.allorigins.win/raw?url=', 
-  useCache: true,
-  cacheMaxAge: 3600000 // 1 hour in ms
+  proxyUrl: 'http://127.0.0.1:3000/proxy?url=' // or use Render, etc.
 });
 
-// Perform a search
-async function search() {
-  try {
-    const results = await client.search('lofi hip hop', { limit: 5 });
-    
-    results.forEach(video => {
-      console.log(`Title: ${video.title}`);
-      console.log(`Link: ${video.link}`);
-      console.log(`Thumbnail: ${video.thumbnail_url}`);
-    });
-  } catch (err) {
-    console.error('Search failed:', err);
-  }
-}
-
-search();
+const results = await client.search('lofi hip hop', { limit: 5 });
+results.forEach(video => console.log(video.title));
 ```
 
-## 📂 Project Structure
+## 📚 Documentation
 
-- `src/index.js`: Main library entry point.
-- `src/lib/parser.js`: Robust logic for parsing YouTube's complex JSON responses.
-- `src/lib/transport.js`: Network layer with proxy and error handling.
-- `src/lib/cache.js`: LocalStorage-based LRU caching mechanism.
-- `src/lib/constants.js`: InnerTube configuration and API keys.
-- `index.html`: A premium, responsive demo page.
+**Complete documentation is in the [`/docs`](./docs/README.md) directory.**
 
-## ⚙️ Configuration
+### Quick Links
 
-The `YouTubeClient` constructor accepts an options object:
+- **[Getting Started Guide](./docs/guides/quick-start.md)** - Setup in 5 minutes
+- **[API Reference](./docs/api/reference.md)** - Complete API documentation
+- **[Usage Examples](./docs/usage/)** - React, Express, and more
+- **[Deployment Guides](./docs/deployment/)** - Deploy locally or to Render
+- **[Troubleshooting](./docs/troubleshooting/)** - Solve common problems
+- **[Architecture](./docs/architecture/)** - How it works under the hood
+- **[Contributing](./docs/development/contributing.md)** - Help improve the library
 
-| Option | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `proxyUrl` | `string` | `''` | Prefix URL for a CORS proxy. |
-| `useCache` | `boolean` | `true` | Enable or disable localStorage caching. |
-| `cacheMaxAge`| `number` | `3600000` | How long to keep results in cache (ms). |
-| `clientContext`| `object` | `WEB` | Override the InnerTube client version/name. |
+## 📋 Installation
 
-## ⚠️ Important Note on CORS
+```bash
+npm install yt-search-lib
+```
 
-Browsers block direct requests to YouTube. To use this library in a browser, you **must** use a CORS proxy. 
-- For development: `https://api.allorigins.win/raw?url=` or `https://cors-anywhere.herokuapp.com/`
-- For production: It is highly recommended to host your own simple proxy server for stability and security.
+## 🔧 Configuration
 
-## 📜 License
+```javascript
+const client = new YouTubeClient({
+  proxyUrl: 'https://your-proxy.com/proxy?url=', // Required for browsers
+  useCache: true,                                    // Enable caching
+  cacheMaxAge: 3600000                              // 1 hour cache TTL
+});
+```
 
-MIT
+See [Configuration Guide](./docs/guides/configuration.md) for all options.
+
+## ⚠️ Important: CORS Proxies
+
+Browsers block direct requests to YouTube. You must use a CORS proxy:
+
+- **Development**: `http://127.0.0.1:3000/proxy?url=` (run `npm run proxy:start`)
+- **Production**: Deploy your own proxy or use [Render](./docs/deployment/render-deployment.md)
+
+See [Deployment Guide](./docs/deployment/README.md) for options.
+
+## 💡 Common Use Cases
+
+| Goal | Guide |
+|------|-------|
+| Search from React | [React Integration](./docs/usage/integration-react.md) |
+| Build API backend | [Express.js Integration](./docs/usage/integration-express.md) |
+| Deploy to production | [Deployment Options](./docs/deployment/README.md) |
+| Handle errors | [Error Handling](./docs/usage/error-handling.md) |
+| Optimize caching | [Caching Strategy](./docs/usage/caching-strategy.md) |
+| Fix a problem | [Troubleshooting](./docs/troubleshooting/README.md) |
+
+## 🛠️ Development
+
+```bash
+npm run build          # Build the library
+npm run test           # Run tests
+npm run test:integration:proxy  # Integration tests with proxy
+npm run proxy:start    # Start local CORS proxy
+npm run lint          # Run ESLint
+npm run format        # Format with Prettier
+```
+
+See [Development Guide](./docs/development/README.md) for details.
+
+## 📄 License
+
+MIT - See [LICENSE](./LICENSE) file for details
+
+## 🤝 Contributing
+
+We welcome contributions! See [Contributing Guide](./docs/development/contributing.md) and [Code of Conduct](./docs/community/code-of-conduct.md).
+
+## 🆘 Support
+
+- **Questions?** → [Support & Help](./docs/community/support.md)
+- **Found a bug?** → [GitHub Issues](https://github.com/luongnv89/youtube-search/issues)
+- **Have an idea?** → [GitHub Discussions](https://github.com/luongnv89/youtube-search/discussions)
+
+---
+
+**Ready to get started?** → [Full Documentation](./docs/README.md)
