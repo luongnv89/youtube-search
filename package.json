@@ -1,6 +1,6 @@
 {
   "name": "yt-search-lib",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Premium client-side YouTube search library using InnerTube API patterns. No API key required.",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -30,6 +30,9 @@
   "scripts": {
     "build": "node build.js",
     "test": "node test.js",
+    "test:integration": "node integration.test.js",
+    "proxy:start": "node proxy-server.js",
+    "test:integration:proxy": "node integration-with-proxy.test.js",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

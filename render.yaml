@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: youtube-proxy
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node proxy-server.js
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: NODE_ENV
+        value: production
