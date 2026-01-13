@@ -34,12 +34,12 @@ results.forEach(video => console.log(video.title));
 
 ### Quick Links
 
-- **[Getting Started Guide](./docs/guides/quick-start.md)** - Setup in 5 minutes
-- **[API Reference](./docs/api/reference.md)** - Complete API documentation
+- **[Getting Started Guide](./docs/deployment/render-quick-start.md)** - Setup in 5 minutes
+- **[API Reference](./docs/API.md)** - Complete API documentation
 - **[Usage Examples](./docs/usage/)** - React, Express, and more
 - **[Deployment Guides](./docs/deployment/)** - Deploy locally or to Render
-- **[Troubleshooting](./docs/troubleshooting/)** - Solve common problems
-- **[Architecture](./docs/architecture/)** - How it works under the hood
+- **[Troubleshooting](./docs/TROUBLESHOOTING.md)** - Solve common problems
+- **[Architecture](./docs/ARCHITECTURE.md)** - How it works under the hood
 - **[Contributing](./docs/development/contributing.md)** - Help improve the library
 
 ## 📋 Installation
@@ -58,7 +58,7 @@ const client = new YouTubeClient({
 });
 ```
 
-See [Configuration Guide](./docs/guides/configuration.md) for all options.
+See [API Reference](./docs/API.md) for all configuration options.
 
 ## ⚠️ Important: CORS Proxies
 
@@ -78,7 +78,7 @@ See [Deployment Guide](./docs/deployment/README.md) for options.
 | Deploy to production | [Deployment Options](./docs/deployment/README.md) |
 | Handle errors | [Error Handling](./docs/usage/error-handling.md) |
 | Optimize caching | [Caching Strategy](./docs/usage/caching-strategy.md) |
-| Fix a problem | [Troubleshooting](./docs/troubleshooting/README.md) |
+| Fix a problem | [Troubleshooting](./docs/TROUBLESHOOTING.md) |
 
 ## 🛠️ Development
 
@@ -104,8 +104,8 @@ We welcome contributions! See [Contributing Guide](./docs/development/contributi
 ## 🆘 Support
 
 - **Questions?** → [Support & Help](./docs/community/support.md)
-- **Found a bug?** → [GitHub Issues](https://github.com/luongnv89/youtube-search/issues)
-- **Have an idea?** → [GitHub Discussions](https://github.com/luongnv89/youtube-search/discussions)
+- **Found a bug?** → [GitHub Issues](https://github.com/luongnv89/yt-search-lib/issues)
+- **Have an idea?** → [GitHub Discussions](https://github.com/luongnv89/yt-search-lib/discussions)
 
 ---
 
