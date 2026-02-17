@@ -1,3 +1,5 @@
+<p align="center"><img src="logo.png" alt="yt-search-lib Logo" width="400"></p>
+
 # YouTube Search Library
 
 A powerful, purely client-side JavaScript library for searching YouTube videos without an official API key. Built with modern JavaScript, zero dependencies, and comprehensive caching.
